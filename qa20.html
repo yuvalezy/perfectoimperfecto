@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta - Relaciones y Comunicación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .question-section {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .question-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .question-title {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background-color: #f5f7ff;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            color: #333;
+        }
+        
+        .option input[type="radio"]:checked + label {
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .text-input-section {
+            margin-top: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s ease;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .reset-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .reset-btn:hover:not(:disabled) {
+            background: #e0e0e0;
+        }
+        
+        .reset-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .locked {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .error-message {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Encuesta - Relaciones y Comunicación</h1>
+        <form id="pollForm">
+            <!-- Q1 -->
+            <div class="question-section">
+                <div class="question-title">Q1: En cada discusión ¿quién tiene la culpa?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1_1" name="q1" value="El hombre" required>
+                        <label for="q1_1">El hombre</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_2" name="q1" value="La mujer">
+                        <label for="q1_2">La mujer</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_3" name="q1" value="Ambos">
+                        <label for="q1_3">Ambos</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_4" name="q1" value="Ninguno">
+                        <label for="q1_4">Ninguno</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-section">
+                <div class="question-title">Q2: ¿Por qué a veces no nos gusta conversar sobre la pelea?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2_1" name="q2" value="Porque tememos que vuelva a empezar la discusión" required>
+                        <label for="q2_1">Porque tememos que vuelva a empezar la discusión</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_2" name="q2" value="Porque podría implicar reconocer que tuvimos parte de la culpa">
+                        <label for="q2_2">Porque podría implicar reconocer que tuvimos parte de la culpa</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_3" name="q2" value="Porque cuando creemos tener la razon, no vemos sentido en hablarlo">
+                        <label for="q2_3">Porque cuando creemos tener la razón, no vemos sentido en hablarlo</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-section">
+                <div class="question-title">Q3: Después de una pelea, lo más sano sería…</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="Fingir que nada pasó y seguir como si todo estuviera bien" required>
+                        <label for="q3_1">Fingir que nada pasó y seguir como si todo estuviera bien</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="Retomar la conversación solo para convencer al otro">
+                        <label for="q3_2">Retomar la conversación solo para convencer al otro</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_3" name="q3" value="Esperar a calmarse y luego intentar entender la perspectiva de la pareja">
+                        <label for="q3_3">Esperar a calmarse y luego intentar entender la perspectiva de la pareja</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_4" name="q3" value="Pedir perdón y aceptar que tienes la culpa">
+                        <label for="q3_4">Pedir perdón y aceptar que tienes la culpa</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-section">
+                <div class="question-title">Q4: ¿Por qué puede ser tan difícil pedir perdón?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4_1" name="q4" value="Porque sentimos que perderíamos poder o tendríamos que ceder" required>
+                        <label for="q4_1">Porque sentimos que perderíamos poder o tendríamos que ceder</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_2" name="q4" value="Porque nos cuesta reconocer que también podemos equivocarnos">
+                        <label for="q4_2">Porque nos cuesta reconocer que también podemos equivocarnos</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_3" name="q4" value="Porque nos hace sentir débiles">
+                        <label for="q4_3">Porque nos hace sentir débiles</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-section">
+                <div class="question-title">Q5: ¿Qué cambia en la relación cuando, en lugar de buscar quién tiene la razón, ambos intentan comprender qué sintió el otro?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q5_1" name="q5" value="Se genera más distancia y resentimiento" required>
+                        <label for="q5_1">Se genera más distancia y resentimiento</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5_2" name="q5" value="Se abre espacio para la empatía y la reconciliación">
+                        <label for="q5_2">Se abre espacio para la empatía y la reconciliación</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5_3" name="q5" value="No cambia nada, las discusiones siempre terminan igual">
+                        <label for="q5_3">No cambia nada, las discusiones siempre terminan igual</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div class="question-section">
+                <div class="question-title">Conversen:</div>
+                <div class="text-input-section">
+                    <label for="conversation" style="color: #666; font-size: 14px;">¿Por qué no se debe dejar la pelea sin resolver? y ¿Cuál es la manera más efectiva de resolverla?</label>
+                    <textarea id="conversation" name="conversation" placeholder="Escribe tu respuesta aquí..." required></textarea>
+                    <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn" id="submitBtn">Enviar Encuesta</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Limpiar</button>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                ✓ ¡Encuesta enviada correctamente! La encuesta está bloqueada.
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('pollForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const successMessage = document.getElementById('successMessage');
+        const textError = document.getElementById('textError');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const textInput = document.getElementById('conversation').value.trim();
+            if (textInput.length === 0) {
+                textError.textContent = 'Por favor completa este campo.';
+                textError.style.display = 'block';
+                return;
+            }
+
+            const formData = new FormData(form);
+            const responses = Object.fromEntries(formData);
+
+            console.log('Respuestas:', responses);
+
+            // Lock form
+            lockForm();
+            successMessage.style.display = 'block';
+        });
+
+        function lockForm() {
+            const inputs = form.querySelectorAll('input, textarea, button');
+            inputs.forEach(input => {
+                if (input.type !== 'reset') {
+                    input.disabled = true;
+                }
+            });
+            form.classList.add('locked');
+            resetBtn.disabled = true;
+        }
+
+        // Clear error on input
+        document.getElementById('conversation').addEventListener('input', function() {
+            textError.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
