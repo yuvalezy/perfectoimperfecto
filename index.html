@@ -6,6 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Encuestas - Índice de Capítulos</title>
     <link rel="stylesheet" href="survey.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         .chapter-list {
             display: grid;
@@ -21,9 +22,9 @@
             padding: 20px;
             text-align: center;
             transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .chapter-card:hover {
@@ -31,6 +32,18 @@
             background-color: #f5f7ff;
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .chapter-link {
+            text-decoration: none;
+            color: inherit;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chapter-link:hover .chapter-number {
+            color: #764ba2;
         }
 
         .chapter-number {
@@ -68,6 +81,31 @@
             background: #764ba2;
             color: white;
         }
+
+        .qr-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .qr-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .qr-button:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
@@ -78,95 +116,248 @@
         </p>
 
         <div class="chapter-list">
-            <a href="capitulo_01.html" class="chapter-card">
-                <div class="chapter-number">1</div>
-                <div class="chapter-title">Capítulo 1</div>
-            </a>
-            <a href="capitulo_02.html" class="chapter-card">
-                <div class="chapter-number">2</div>
-                <div class="chapter-title">Capítulo 2</div>
-            </a>
-            <a href="capitulo_03.html" class="chapter-card">
-                <div class="chapter-number">3</div>
-                <div class="chapter-title">Capítulo 3</div>
-            </a>
-            <a href="capitulo_04.html" class="chapter-card">
-                <div class="chapter-number">4</div>
-                <div class="chapter-title">Capítulo 4</div>
-            </a>
-            <a href="capitulo_05.html" class="chapter-card">
-                <div class="chapter-number">5</div>
-                <div class="chapter-title">Capítulo 5</div>
-            </a>
-            <a href="capitulo_06.html" class="chapter-card">
-                <div class="chapter-number">6</div>
-                <div class="chapter-title">Capítulo 6</div>
-            </a>
-            <a href="capitulo_07.html" class="chapter-card">
-                <div class="chapter-number">7</div>
-                <div class="chapter-title">Capítulo 7</div>
-            </a>
-            <a href="capitulo_08.html" class="chapter-card">
-                <div class="chapter-number">8</div>
-                <div class="chapter-title">Capítulo 8</div>
-            </a>
-            <a href="capitulo_09.html" class="chapter-card">
-                <div class="chapter-number">9</div>
-                <div class="chapter-title">Capítulo 9</div>
-            </a>
-            <a href="capitulo_10.html" class="chapter-card">
-                <div class="chapter-number">10</div>
-                <div class="chapter-title">Capítulo 10</div>
-            </a>
-            <a href="capitulo_11.html" class="chapter-card">
-                <div class="chapter-number">11</div>
-                <div class="chapter-title">Capítulo 11</div>
-            </a>
-            <a href="capitulo_12.html" class="chapter-card">
-                <div class="chapter-number">12</div>
-                <div class="chapter-title">Capítulo 12</div>
-            </a>
-            <a href="capitulo_13.html" class="chapter-card">
-                <div class="chapter-number">13</div>
-                <div class="chapter-title">Capítulo 13</div>
-            </a>
-            <a href="capitulo_14.html" class="chapter-card">
-                <div class="chapter-number">14</div>
-                <div class="chapter-title">Capítulo 14</div>
-            </a>
-            <a href="capitulo_15.html" class="chapter-card">
-                <div class="chapter-number">15</div>
-                <div class="chapter-title">Capítulo 15</div>
-            </a>
-            <a href="capitulo_16.html" class="chapter-card">
-                <div class="chapter-number">16</div>
-                <div class="chapter-title">Capítulo 16</div>
-            </a>
-            <a href="capitulo_17.html" class="chapter-card">
-                <div class="chapter-number">17</div>
-                <div class="chapter-title">Capítulo 17</div>
-            </a>
-            <a href="capitulo_18.html" class="chapter-card">
-                <div class="chapter-number">18</div>
-                <div class="chapter-title">Capítulo 18</div>
-            </a>
-            <a href="capitulo_19.html" class="chapter-card">
-                <div class="chapter-number">19</div>
-                <div class="chapter-title">Capítulo 19</div>
-            </a>
-            <a href="capitulo_20.html" class="chapter-card">
-                <div class="chapter-number">20</div>
-                <div class="chapter-title">Capítulo 20</div>
-            </a>
-            <a href="capitulo_21.html" class="chapter-card">
-                <div class="chapter-number">21</div>
-                <div class="chapter-title">Capítulo 21</div>
-            </a>
+            <div class="chapter-card">
+                <a href="capitulo_01.html" class="chapter-link">
+                    <div class="chapter-number">1</div>
+                    <div class="chapter-title">Capítulo 1</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_01.html', 'Capitulo_01')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_02.html" class="chapter-link">
+                    <div class="chapter-number">2</div>
+                    <div class="chapter-title">Capítulo 2</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_02.html', 'Capitulo_02')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_03.html" class="chapter-link">
+                    <div class="chapter-number">3</div>
+                    <div class="chapter-title">Capítulo 3</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_03.html', 'Capitulo_03')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_04.html" class="chapter-link">
+                    <div class="chapter-number">4</div>
+                    <div class="chapter-title">Capítulo 4</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_04.html', 'Capitulo_04')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_05.html" class="chapter-link">
+                    <div class="chapter-number">5</div>
+                    <div class="chapter-title">Capítulo 5</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_05.html', 'Capitulo_05')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_06.html" class="chapter-link">
+                    <div class="chapter-number">6</div>
+                    <div class="chapter-title">Capítulo 6</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_06.html', 'Capitulo_06')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_07.html" class="chapter-link">
+                    <div class="chapter-number">7</div>
+                    <div class="chapter-title">Capítulo 7</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_07.html', 'Capitulo_07')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_08.html" class="chapter-link">
+                    <div class="chapter-number">8</div>
+                    <div class="chapter-title">Capítulo 8</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_08.html', 'Capitulo_08')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_09.html" class="chapter-link">
+                    <div class="chapter-number">9</div>
+                    <div class="chapter-title">Capítulo 9</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_09.html', 'Capitulo_09')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_10.html" class="chapter-link">
+                    <div class="chapter-number">10</div>
+                    <div class="chapter-title">Capítulo 10</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_10.html', 'Capitulo_10')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_11.html" class="chapter-link">
+                    <div class="chapter-number">11</div>
+                    <div class="chapter-title">Capítulo 11</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_11.html', 'Capitulo_11')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_12.html" class="chapter-link">
+                    <div class="chapter-number">12</div>
+                    <div class="chapter-title">Capítulo 12</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_12.html', 'Capitulo_12')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_13.html" class="chapter-link">
+                    <div class="chapter-number">13</div>
+                    <div class="chapter-title">Capítulo 13</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_13.html', 'Capitulo_13')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_14.html" class="chapter-link">
+                    <div class="chapter-number">14</div>
+                    <div class="chapter-title">Capítulo 14</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_14.html', 'Capitulo_14')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_15.html" class="chapter-link">
+                    <div class="chapter-number">15</div>
+                    <div class="chapter-title">Capítulo 15</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_15.html', 'Capitulo_15')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_16.html" class="chapter-link">
+                    <div class="chapter-number">16</div>
+                    <div class="chapter-title">Capítulo 16</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_16.html', 'Capitulo_16')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_17.html" class="chapter-link">
+                    <div class="chapter-number">17</div>
+                    <div class="chapter-title">Capítulo 17</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_17.html', 'Capitulo_17')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_18.html" class="chapter-link">
+                    <div class="chapter-number">18</div>
+                    <div class="chapter-title">Capítulo 18</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_18.html', 'Capitulo_18')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_19.html" class="chapter-link">
+                    <div class="chapter-number">19</div>
+                    <div class="chapter-title">Capítulo 19</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_19.html', 'Capitulo_19')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_20.html" class="chapter-link">
+                    <div class="chapter-number">20</div>
+                    <div class="chapter-title">Capítulo 20</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_20.html', 'Capitulo_20')">📥 Descargar QR</button>
+            </div>
+            <div class="chapter-card">
+                <a href="capitulo_21.html" class="chapter-link">
+                    <div class="chapter-number">21</div>
+                    <div class="chapter-title">Capítulo 21</div>
+                </a>
+                <button class="qr-button" onclick="downloadQR('capitulo_21.html', 'Capitulo_21')">📥 Descargar QR</button>
+            </div>
         </div>
 
         <div class="example-link">
             <a href="example.html">Ver Ejemplo de Encuesta</a>
         </div>
     </div>
+
+    <script>
+        function downloadQR(chapterFile, filename) {
+            try {
+                // Construct the full URL
+                const url = window.location.origin + window.location.pathname.replace('index.html', '') + chapterFile;
+
+                // Create a temporary container for QR code
+                const tempContainer = document.createElement('div');
+                tempContainer.style.display = 'none';
+                document.body.appendChild(tempContainer);
+
+                // Generate QR code (size 400x400 for good quality)
+                const qrcode = new QRCode(tempContainer, {
+                    text: url,
+                    width: 400,
+                    height: 400,
+                    colorDark: '#000000',
+                    colorLight: '#FFFFFF',
+                    correctLevel: QRCode.CorrectLevel.H // High error correction for logo overlay
+                });
+
+                // Wait a bit for QR code to be generated, then get the canvas
+                setTimeout(function() {
+                    const canvas = tempContainer.querySelector('canvas');
+                    if (!canvas) {
+                        console.error('Canvas not found');
+                        alert('Error al generar el código QR. Por favor intenta de nuevo.');
+                        document.body.removeChild(tempContainer);
+                        return;
+                    }
+
+                    const ctx = canvas.getContext('2d');
+
+                    // Load and draw the logo in the center
+                    const logo = new Image();
+                    logo.onload = function() {
+                        // Calculate logo size (about 20% of QR code size)
+                        const logoSize = canvas.width * 0.2;
+                        const logoX = (canvas.width - logoSize) / 2;
+                        const logoY = (canvas.height - logoSize) / 2;
+
+                        // Draw white background circle for logo
+                        ctx.fillStyle = 'white';
+                        ctx.beginPath();
+                        ctx.arc(canvas.width / 2, canvas.height / 2, logoSize / 2 + 5, 0, 2 * Math.PI);
+                        ctx.fill();
+
+                        // Draw the logo
+                        ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+
+                        // Convert canvas to blob and download
+                        canvas.toBlob(function(blob) {
+                            const downloadUrl = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = downloadUrl;
+                            a.download = `${filename}_QR.png`;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(downloadUrl);
+                            document.body.removeChild(tempContainer);
+                        }, 'image/png');
+                    };
+
+                    logo.onerror = function() {
+                        console.error('Failed to load logo, downloading QR without logo');
+                        // Download without logo if loading fails
+                        canvas.toBlob(function(blob) {
+                            const downloadUrl = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = downloadUrl;
+                            a.download = `${filename}_QR.png`;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(downloadUrl);
+                            document.body.removeChild(tempContainer);
+                        }, 'image/png');
+                    };
+
+                    logo.src = './male-and-female-symbol.svg';
+                }, 200); // Wait 200ms for QR code generation
+
+            } catch (error) {
+                console.error('Error generating QR code:', error);
+                alert('Error al generar el código QR. Por favor intenta de nuevo.');
+            }
+        }
+    </script>
 </body>
 </html>
