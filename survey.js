@@ -14,17 +14,37 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const textInput = document.getElementById('conversation').value.trim();
-        if (textInput.length === 0) {
-            textError.textContent = 'Por favor completa este campo.';
-            textError.style.display = 'block';
+        // Check for required textarea fields
+        const conversationField = document.getElementById('conversation');
+        if (conversationField && conversationField.value.trim().length === 0) {
+            const textErr = document.getElementById('textError') || textError;
+            if (textErr) {
+                textErr.textContent = 'Por favor completa este campo.';
+                textErr.style.display = 'block';
+            }
             return;
         }
 
         const formData = new FormData(form);
-        const responses = Object.fromEntries(formData);
+        const responses = {};
 
-        console.log('Respuestas:', responses);
+        // Get all unique field names from the form
+        const fieldNames = [...new Set(formData.keys())];
+
+        // For each field, collect all its values (handles multiple checkboxes with same name)
+        fieldNames.forEach(name => {
+            const allValues = formData.getAll(name);
+            console.log(`Field "${name}" has ${allValues.length} value(s):`, allValues);
+            if (allValues.length > 1) {
+                // Multiple values - join them with comma
+                responses[name] = allValues.join(', ');
+            } else if (allValues.length === 1) {
+                // Single value
+                responses[name] = allValues[0];
+            }
+        });
+
+        console.log('Respuestas finales:', responses);
 
         // Show summary
         displaySummary(responses);
