@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 6 - Después de ver el video</title>
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Después de ver el video, realiza este ejercicio:</h1>
+        <form id="pollForm">
+
+            <!-- Q1 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q1: Los hombres no necesitan tanto conectar íntimamente con su esposa</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1_1" name="q1" value="Cierto" required>
+                        <label for="q1_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_2" name="q1" value="Falso">
+                        <label for="q1_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q2: Los hombres manifiestan su amor a través de elogios y cosas materiales</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2_1" name="q2" value="Cierto" required>
+                        <label for="q2_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_2" name="q2" value="Falso">
+                        <label for="q2_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q3: Para las mujeres, es muy importante la calidad y cantidad de tiempo que comparten con sus esposos como símbolo de amor</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="Cierto" required>
+                        <label for="q3_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="Falso">
+                        <label for="q3_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q4: Las mujeres pueden ser felices en su relación de pareja aunque su esposo esté ocupado trabajando dedicándose a sus cosas</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4_1" name="q4" value="Cierto" required>
+                        <label for="q4_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_2" name="q4" value="Falso">
+                        <label for="q4_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q5 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q5: Las mujeres necesitan sentir que son la prioridad de sus esposos</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q5_1" name="q5" value="Cierto" required>
+                        <label for="q5_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5_2" name="q5" value="Falso">
+                        <label for="q5_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q6 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q6: Los hombres trabajan para obtener prestigio por el bien de su familia</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q6_1" name="q6" value="Cierto" required>
+                        <label for="q6_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6_2" name="q6" value="Falso">
+                        <label for="q6_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q7 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q7: Los hombres buscan prestigio para satisfacer su propia autoestima y sentimiento de valía</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q7_1" name="q7" value="Cierto" required>
+                        <label for="q7_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7_2" name="q7" value="Falso">
+                        <label for="q7_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q8 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q8: Las necesidades de los hombres y de las mujeres son diferentes y por eso los cuesta tener una buena relación de pareja</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q8_1" name="q8" value="Cierto" required>
+                        <label for="q8_1">Cierto</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q8_2" name="q8" value="Falso">
+                        <label for="q8_2">Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div class="question-section">
+                <div class="question-title">Conversen:</div>
+                <div class="text-input-section">
+                    <label for="conversation" style="color: #666; font-size: 14px;">¿Cómo puede cada uno demostrarle a su pareja que es su prioridad?</label>
+                    <textarea id="conversation" name="conversation" placeholder="Escribe tu respuesta aquí..." required></textarea>
+                    <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn" id="submitBtn">Enviar Encuesta</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Limpiar</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            ✓ ¡Encuesta enviada correctamente!
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section" id="summarySection" style="display: none;">
+            <h2 class="summary-title">Resumen de tus respuestas</h2>
+            <div id="summaryContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Define questions for this survey
+        window.surveyQuestions = {
+            q1: "Q1: Los hombres no necesitan tanto conectar íntimamente con su esposa",
+            q2: "Q2: Los hombres manifiestan su amor a través de elogios y cosas materiales",
+            q3: "Q3: Para las mujeres, es muy importante la calidad y cantidad de tiempo que comparten con sus esposos como símbolo de amor",
+            q4: "Q4: Las mujeres pueden ser felices en su relación de pareja aunque su esposo esté ocupado trabajando dedicándose a sus cosas",
+            q5: "Q5: Las mujeres necesitan sentir que son la prioridad de sus esposos",
+            q6: "Q6: Los hombres trabajan para obtener prestigio por el bien de su familia",
+            q7: "Q7: Los hombres buscan prestigio para satisfacer su propia autoestima y sentimiento de valía",
+            q8: "Q8: Las necesidades de los hombres y de las mujeres son diferentes y por eso los cuesta tener una buena relación de pareja",
+            conversation: "¿Cómo puede cada uno demostrarle a su pareja que es su prioridad?"
+        };
+    </script>
+    <script src="survey.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 13 - Despues de ver el video, realiza este ejercicio:</title>
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Despues de ver el video, realiza este ejercicio:</h1>
+        <form id="pollForm">
+
+            <!-- Q1 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q1: ¿Cuáles son las diferencias entre el noviazgo y el matrimonio?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1_1" name="q1" value="Ninguna" required>
+                        <label for="q1_1">Ninguna</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_2" name="q1" value="Comenzamos a ver más fallas en la pareja">
+                        <label for="q1_2">Comenzamos a ver más fallas en la pareja</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_3" name="q1" value="La relación se vuelva más fácil">
+                        <label for="q1_3">La relación se vuelva más fácil</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q2: ¿De qué manera puedo mejorar mi relación?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2_1" name="q2" value="Esperando que mi pareja adivine y satisfaga todo lo que necesito" required>
+                        <label for="q2_1">Esperando que mi pareja adivine y satisfaga todo lo que necesito</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_2" name="q2" value="Tratando de comprender y satisfacer las necesidades del otro">
+                        <label for="q2_2">Tratando de comprender y satisfacer las necesidades del otro</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_3" name="q2" value="Dejando que las cosas sigan igual">
+                        <label for="q2_3">Dejando que las cosas sigan igual</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q3: ¿Qué actitud contribuye más a mantener una relación sana?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="Querer tener siempre la razón" required>
+                        <label for="q3_1">Querer tener siempre la razón</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="Callar para evitar discusiones">
+                        <label for="q3_2">Callar para evitar discusiones</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_3" name="q3" value="Ser empático y tratar de entender todo el panorama">
+                        <label for="q3_3">Ser empático y tratar de entender todo el panorama</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div class="question-section">
+                <div class="question-title">Conversen:</div>
+                <div class="text-input-section">
+                    <label for="conversation" style="color: #666; font-size: 14px;">¿Cuáles son 2 cosas que puedes cambiar en tu relación después de ver este video?</label>
+                    <textarea id="conversation" name="conversation" placeholder="Escribe tu respuesta aquí..." required></textarea>
+                    <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn" id="submitBtn">Enviar Encuesta</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Limpiar</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            ✓ ¡Encuesta enviada correctamente!
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section" id="summarySection" style="display: none;">
+            <h2 class="summary-title">Resumen de tus respuestas</h2>
+            <div id="summaryContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Define questions for this survey
+        window.surveyQuestions = {
+            q1: "Q1: ¿Cuáles son las diferencias entre el noviazgo y el matrimonio?",
+            q2: "Q2: ¿De qué manera puedo mejorar mi relación?",
+            q3: "Q3: ¿Qué actitud contribuye más a mantener una relación sana?",
+            conversation: "¿Cuáles son 2 cosas que puedes cambiar en tu relación después de ver este video?"
+        };
+    </script>
+    <script src="survey.js"></script>
+</body>
+</html>
