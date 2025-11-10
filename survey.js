@@ -25,6 +25,32 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Validate email field
+        const emailField = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+        if (emailField) {
+            const emailValue = emailField.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailValue.length === 0) {
+                if (emailError) {
+                    emailError.textContent = 'Por favor ingresa tu correo electrónico.';
+                    emailError.style.display = 'block';
+                }
+                emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            if (!emailRegex.test(emailValue)) {
+                if (emailError) {
+                    emailError.textContent = 'Por favor ingresa un correo electrónico válido.';
+                    emailError.style.display = 'block';
+                }
+                emailField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+        }
+
         // Validate checkbox groups - at least one must be selected in each visible group
         const checkboxGroups = document.querySelectorAll('.checkbox-group');
         for (const group of checkboxGroups) {
@@ -150,6 +176,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (textError) {
                 textError.style.display = 'none';
             }
+        });
+    }
+
+    // Clear email error on input
+    const emailField = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    if (emailField && emailError) {
+        emailField.addEventListener('input', function() {
+            emailError.style.display = 'none';
         });
     }
 

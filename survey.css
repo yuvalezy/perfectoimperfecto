@@ -90,19 +90,26 @@ h1 {
     margin-top: 20px;
 }
 
-textarea {
+textarea,
+input[type="email"],
+input[type="text"] {
     width: 100%;
     padding: 12px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     font-family: inherit;
     font-size: 14px;
-    resize: vertical;
-    min-height: 100px;
     transition: border-color 0.3s ease;
 }
 
-textarea:focus {
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+textarea:focus,
+input[type="email"]:focus,
+input[type="text"]:focus {
     outline: none;
     border-color: #667eea;
 }
