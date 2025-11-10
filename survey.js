@@ -105,12 +105,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Respuestas finales:', responses);
 
+        // Generate answers_html for email template
+        const answersHtml = generateAnswersHtml(responses);
+
+        // Get user email
+        const userEmail = responses.email || '';
+
+        // Send email via EmailJS
+        sendEmailJS(answersHtml, userEmail);
+
         // Show summary
         displaySummary(responses);
 
         // Hide form and show summary
         form.style.display = 'none';
-        successMessage.style.display = 'block';
         summarySection.style.display = 'block';
 
         // Scroll to top smoothly
@@ -156,6 +164,70 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         summaryContent.innerHTML = summaryHTML;
+    }
+
+    function generateAnswersHtml(responses) {
+        const questions = window.surveyQuestions || {};
+        let answersHtml = '';
+
+        for (const [key, value] of Object.entries(responses)) {
+            // Skip email field in the answers table
+            if (key === 'email') continue;
+
+            const questionText = questions[key] || key;
+
+            // Format the value (handle multiple selections)
+            let formattedValue = value;
+            if (typeof value === 'string' && value.includes(' | ')) {
+                const values = value.split(' | ');
+                // Filter out "Todos" or "Todas las anteriores" if present
+                const filteredValues = values.filter(v =>
+                    v !== 'Todos' &&
+                    v !== 'Todas las anteriores'
+                );
+                formattedValue = filteredValues.join(', ');
+            }
+
+            answersHtml += `
+                <tr>
+                    <td style="padding: 12px; border: 1px solid #ddd; background-color: #f9f9f9; font-weight: 600;">${questionText}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">${formattedValue}</td>
+                </tr>
+            `;
+        }
+
+        return answersHtml;
+    }
+
+    function sendEmailJS(answersHtml, userEmail) {
+        // Check if EmailJS is available
+        if (typeof emailjs === 'undefined') {
+            console.error('EmailJS no está cargado');
+            alert('Error: El servicio de correo no está disponible.');
+            return;
+        }
+
+        const chapterName = window.chapterName || 'Capítulo';
+
+        const templateParams = {
+            chapter: chapterName,
+            answers_html: answersHtml,
+            to_email: userEmail,
+            user_email: userEmail
+        };
+
+        emailjs.send("service_i5l7p4t", "template_arwcoqm", templateParams)
+            .then(() => {
+                console.log('Correo enviado exitosamente');
+                successMessage.textContent = '✓ ¡Encuesta enviada correctamente!';
+                successMessage.style.display = 'block';
+            })
+            .catch((error) => {
+                console.error('Error al enviar el correo:', error);
+                successMessage.textContent = '✓ Respuestas guardadas (Error al enviar correo)';
+                successMessage.style.display = 'block';
+                successMessage.style.background = '#ff9800';
+            });
     }
 
     function lockForm() {
