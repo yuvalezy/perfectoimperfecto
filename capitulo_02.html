@@ -109,9 +109,20 @@
                 </div>
             </div>
 
+            <!-- Email Section -->
+            <div class="question-section">
+                <div class="question-title"><label for="email">Correo Electrónico</label></div>
+                <div class="text-input-section">
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                    <div class="error-message" id="emailError" style="display: none;"></div>
+                </div>
+            </div>
+
             <!-- Buttons -->
             <div class="button-group">
-                <button type="submit" class="submit-btn" id="submitBtn">Enviar Encuesta</button>
+                <button class="submit-btn g-recaptcha" id="submitBtn"
+                        data-sitekey="6Lc_JwgsAAAAAKq5ALUnRSwPCCQAlclmCvOp1xBU"
+                        data-callback="onSubmitWithRecaptcha">Enviar Encuesta</button>
                 <button type="reset" class="reset-btn" id="resetBtn">Limpiar</button>
             </div>
         </form>
@@ -139,7 +150,22 @@
             conversation: "Q6: ¿Cómo define cada una la felicidad?",
             conversation2: "Q7: Si cada uno se siente feliz. ¿Cómo está el nivel de autoestima de cada uno y cuál es la conexión entre la autoestima y la felicidad?"
         };
+
+        // Define the chapter name for this survey
+        window.chapterName = "Capítulo 2";
     </script>
-    <script src="survey.js"></script>
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("dIkaG1zfVRFaJatSE");
+        })();
+    </script>
+
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="survey.js?v=20250110003"></script>
 </body>
 </html>
