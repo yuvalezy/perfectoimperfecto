@@ -151,6 +151,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let summaryHTML = '';
 
         for (const [key, value] of Object.entries(responses)) {
+            // Skip email and recaptcha response from summary
+            if (key === 'email' || key === 'g-recaptcha-response') continue;
+
             const question = questions[key];
 
             // Check if value contains multiple selections (has pipe separator)
@@ -190,8 +193,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let answersHtml = '';
 
         for (const [key, value] of Object.entries(responses)) {
-            // Skip email field in the answers table
-            if (key === 'email') continue;
+            // Skip email and recaptcha response from email answers table
+            if (key === 'email' || key === 'g-recaptcha-response') continue;
 
             const questionText = questions[key] || key;
 
