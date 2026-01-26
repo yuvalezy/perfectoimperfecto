@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11 - After watching the video</title>
+    <link rel="stylesheet" href="survey.css">
+    <style>
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-option:hover {
+            border-color: #667eea;
+            background-color: #f5f7ff;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .checkbox-option label {
+            cursor: pointer;
+            flex: 1;
+            color: #333;
+        }
+
+        .checkbox-option input[type="checkbox"]:checked + label {
+            color: #667eea;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>After watching the video, complete this exercise:</h1>
+        <form id="pollForm">
+
+            <!-- Q1 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q1: Select the correct answers:</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1_1" name="q1" value="Saber dar a mi pareja" required>
+                        <label for="q1_1">Saber dar a mi pareja</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_2" name="q1" value="Saber recibir de mi pareja">
+                        <label for="q1_2">Saber recibir de mi pareja</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_3" name="q1" value="Aumentar mi empatía por mi pareja">
+                        <label for="q1_3">Aumentar mi empatía por mi pareja</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_4" name="q1" value="Buscar actividades que podamos hacer juntos">
+                        <label for="q1_4">Buscar actividades que podamos hacer juntos</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_5" name="q1" value="Respetar las diferencias que existen entre el hombre y la mujer">
+                        <label for="q1_5">Respetar las diferencias que existen entre el hombre y la mujer</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_6" name="q1" value="Fortalecer mi autoestima a través de identificar lo que me satisface como persona y realizarlo">
+                        <label for="q1_6">Fortalecer mi autoestima a través de identificar lo que me satisface como persona y realizarlo</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q2: How does healthy self-esteem influence a marriage?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2_1" name="q2" value="Se siente creída, y esto hace a la otra persona sentirse mal" required>
+                        <label for="q2_1">Se siente creída, y esto hace a la otra persona sentirse mal</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_2" name="q2" value="No depende tanto de su pareja y esto hace un buen balance">
+                        <label for="q2_2">No depende tanto de su pareja y esto hace un buen balance</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_3" name="q2" value="No va a buscar relacionarse con su pareja">
+                        <label for="q2_3">No va a buscar relacionarse con su pareja</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q3: What happens when one of the partners has low self-esteem?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="El otro intenta compensarlo y se desgasta" required>
+                        <label for="q3_1">El otro intenta compensarlo y se desgasta</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="Se generan malentendidos o dependencia">
+                        <label for="q3_2">Se generan malentendidos o dependencia</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_3" name="q3" value="Ambos se desconectan emocionalmente">
+                        <label for="q3_3">Ambos se desconectan emocionalmente</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_todas" name="q3" value="All of the above">
+                        <label for="q3_todas">All of the above</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q4: What is necessary to build good self-esteem?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4_1" name="q4" value="Cumplir con todos los sueños que tengo" required>
+                        <label for="q4_1">Cumplir con todos los sueños que tengo</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_2" name="q4" value="Estar conforme con mis talentos y logros">
+                        <label for="q4_2">Estar conforme con mis talentos y logros</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_3" name="q4" value="Ser la persona más popular">
+                        <label for="q4_3">Ser la persona más popular</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q5 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q5: How would you define good self-esteem in a relationship?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q5_1" name="q5" value="Poder ser yo mismo sin miedo a decepcionar al otro" required>
+                        <label for="q5_1">Poder ser yo mismo sin miedo a decepcionar al otro</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5_2" name="q5" value="No necesitar aprobación constante">
+                        <label for="q5_2">No necesitar aprobación constante</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5_3" name="q5" value="Confiar en lo que aporto y en lo que somos juntos">
+                        <label for="q5_3">Confiar en lo que aporto y en lo que somos juntos</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div class="question-section">
+                <div class="question-title">Discuss:</div>
+                <div class="text-input-section">
+                    <label for="conversation" style="color: #666; font-size: 14px;">Sobre tres ideas que vieron en el video que pudieran aplicar en su matrimonio</label>
+                    <textarea id="conversation" name="conversation" placeholder="Write your answer here..." required></textarea>
+                    <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Email Section -->
+            <div class="question-section">
+                <div class="question-title"><label for="email">Email Address</label></div>
+                <div class="text-input-section">
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    <div class="error-message" id="emailError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="question-section">
+                <div class="g-recaptcha" data-sitekey="6LeyoggsAAAAAAgXzEg9PAC9ypZtr-yyc24cAnN_"></div>
+                <div class="error-message" id="recaptchaError" style="display: none;"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Survey</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Clear</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            ✓ Survey submitted successfully!
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section" id="summarySection" style="display: none;">
+            <h2 class="summary-title">Summary of your answers</h2>
+            <div id="summaryContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Define questions for this survey
+        window.surveyQuestions = {
+            q1: "Q1: Select the correct answers:",
+            q2: "Q2: How does healthy self-esteem influence a marriage?",
+            q3: "Q3: What happens when one of the partners has low self-esteem?",
+            q4: "Q4: What is necessary to build good self-esteem?",
+            q5: "Q5: How would you define good self-esteem in a relationship?",
+            conversation: "Sobre tres ideas que vieron en el video que pudieran aplicar en su matrimonio"
+        };
+
+        // Define the chapter name for this survey
+        window.chapterName = "Chapter 11";
+    </script>
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("wZ_Z4F9Y-8CcFzD2g");
+        })();
+    </script>
+
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="survey.js?v=20250110005"></script>
+</body>
+</html>

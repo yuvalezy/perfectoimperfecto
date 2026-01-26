@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4 - After watching the video</title>
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="container">
+        <h1>After watching the video, complete this exercise:</h1>
+        <form id="pollForm">
+
+            <!-- Q1 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q1: What is the foundation of a woman’s self-esteem?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1_1" name="q1" value="Sus logros, apariencia y el afecto que reciben" required>
+                        <label for="q1_1">Sus logros, apariencia y el afecto que reciben</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_2" name="q1" value="El poder, prestigio y placer que obtienen">
+                        <label for="q1_2">El poder, prestigio y placer que obtienen</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q2: What is the primary emotional need of most women in a relationship?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2_1" name="q2" value="Que les provean sus necesidades" required>
+                        <label for="q2_1">Que les provean sus necesidades</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_2" name="q2" value="Sentirse amadas">
+                        <label for="q2_2">Sentirse amadas</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_3" name="q2" value="Poder decidir dónde invertir su dinero">
+                        <label for="q2_3">Poder decidir dónde invertir su dinero</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q3: What contributes most to a woman feeling loved?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="Sintiendo conexión con su marido" required>
+                        <label for="q3_1">Sintiendo conexión con su marido</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="Que la deje hacer lo que quiera sin interesarse en sus cosas">
+                        <label for="q3_2">Que la deje hacer lo que quiera sin interesarse en sus cosas</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_3" name="q3" value="Que le permita viajar sola">
+                        <label for="q3_3">Que le permita viajar sola</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_4" name="q3" value="Explicándole que todos los consejos que le da son para el bien de ella">
+                        <label for="q3_4">Explicándole que todos los consejos que le da son para el bien de ella</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q4: What characteristics appear in a woman who feels constantly loved?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4_1" name="q4" value="Se vuelve egocéntrica" required>
+                        <label for="q4_1">Se vuelve egocéntrica</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_2" name="q4" value="Suele ser más efectiva en todo lo que hace">
+                        <label for="q4_2">Suele ser más efectiva en todo lo que hace</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_3" name="q4" value="Se queda sin ganas de hacer cosas">
+                        <label for="q4_3">Se queda sin ganas de hacer cosas</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div class="question-section">
+                <div class="question-title">Discuss:</div>
+                <div class="text-input-section">
+                    <label for="conversation" style="color: #666; font-size: 14px;">¿Cómo expresa la mujer la importancia de las A en su vida?</label>
+                    <textarea id="conversation" name="conversation" placeholder="Write your answer here..." required></textarea>
+                    <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+                <div class="text-input-section">
+                    <label for="conversation2" style="color: #666; font-size: 14px;">¿Cómo entiende el marido la importancia de las A de su esposa?</label>
+                    <textarea id="conversation2" name="conversation2" placeholder="Write your answer here..."></textarea>
+                    <div class="error-message" id="textError2" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Email Section -->
+            <div class="question-section">
+                <div class="question-title"><label for="email">Email Address</label></div>
+                <div class="text-input-section">
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    <div class="error-message" id="emailError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="question-section">
+                <div class="g-recaptcha" data-sitekey="6LeyoggsAAAAAAgXzEg9PAC9ypZtr-yyc24cAnN_"></div>
+                <div class="error-message" id="recaptchaError" style="display: none;"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Survey</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Clear</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            ✓ Survey submitted successfully!
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section" id="summarySection" style="display: none;">
+            <h2 class="summary-title">Summary of your answers</h2>
+            <div id="summaryContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Define questions for this survey
+        window.surveyQuestions = {
+            q1: "Q1: What is the foundation of a woman’s self-esteem?",
+            q2: "Q2: What is the primary emotional need of most women in a relationship?",
+            q3: "Q3: What contributes most to a woman feeling loved?",
+            q4: "Q4: What characteristics appear in a woman who feels constantly loved?",
+            conversation: "¿Cómo expresa la mujer la importancia de las A en su vida?",
+            conversation2: "¿Cómo entiende el marido la importancia de las A de su esposa?"
+        };
+
+        // Define the chapter name for this survey
+        window.chapterName = "Chapter 4";
+    </script>
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("wZ_Z4F9Y-8CcFzD2g");
+        })();
+    </script>
+
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="survey.js?v=20250110005"></script>
+</body>
+</html>

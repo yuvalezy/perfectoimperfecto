@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 13 - After watching the video</title>
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="container">
+        <h1>After watching the video, complete this exercise:</h1>
+        <form id="pollForm">
+
+            <!-- Q1 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q1: Are there differences between courtship and marriage?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1_1" name="q1" value="None" required>
+                        <label for="q1_1">None</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_2" name="q1" value="Comenzamos a ver más fallas en la pareja">
+                        <label for="q1_2">Comenzamos a ver más fallas en la pareja</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_3" name="q1" value="La relación se vuelva más fácil">
+                        <label for="q1_3">La relación se vuelva más fácil</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q2: How can I improve my relationship?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2_1" name="q2" value="Esperando que mi pareja adivine y satisfaga todo lo que necesito" required>
+                        <label for="q2_1">Esperando que mi pareja adivine y satisfaga todo lo que necesito</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_2" name="q2" value="Tratando de comprender y satisfacer las necesidades del otro">
+                        <label for="q2_2">Tratando de comprender y satisfacer las necesidades del otro</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_3" name="q2" value="Dejando que las cosas sigan igual">
+                        <label for="q2_3">Dejando que las cosas sigan igual</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 - Radio -->
+            <div class="question-section">
+                <div class="question-title">Q3: Which attitude best contributes to a healthy relationship?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="Querer tener siempre la razón" required>
+                        <label for="q3_1">Querer tener siempre la razón</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="Callar para evitar discusiones">
+                        <label for="q3_2">Callar para evitar discusiones</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_3" name="q3" value="Ser empático y tratar de entender todo el panorama">
+                        <label for="q3_3">Ser empático y tratar de entender todo el panorama</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div class="question-section">
+                <div class="question-title">Discuss:</div>
+                <div class="text-input-section">
+                    <label for="conversation" style="color: #666; font-size: 14px;">¿Cuáles son 2 cosas que puedes cambiar en tu relación después de ver este video?</label>
+                    <textarea id="conversation" name="conversation" placeholder="Write your answer here..." required></textarea>
+                    <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Email Section -->
+            <div class="question-section">
+                <div class="question-title"><label for="email">Email Address</label></div>
+                <div class="text-input-section">
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    <div class="error-message" id="emailError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="question-section">
+                <div class="g-recaptcha" data-sitekey="6LeyoggsAAAAAAgXzEg9PAC9ypZtr-yyc24cAnN_"></div>
+                <div class="error-message" id="recaptchaError" style="display: none;"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Survey</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Clear</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            ✓ Survey submitted successfully!
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section" id="summarySection" style="display: none;">
+            <h2 class="summary-title">Summary of your answers</h2>
+            <div id="summaryContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Define questions for this survey
+        window.surveyQuestions = {
+            q1: "Q1: Are there differences between courtship and marriage?",
+            q2: "Q2: How can I improve my relationship?",
+            q3: "Q3: Which attitude best contributes to a healthy relationship?",
+            conversation: "¿Cuáles son 2 cosas que puedes cambiar en tu relación después de ver este video?"
+        };
+
+        // Define the chapter name for this survey
+        window.chapterName = "Chapter 13";
+    </script>
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("wZ_Z4F9Y-8CcFzD2g");
+        })();
+    </script>
+
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="survey.js?v=20250110005"></script>
+</body>
+</html>

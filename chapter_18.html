@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 18 - After watching the video</title>
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="container">
+        <h1>After watching the video, complete this exercise:</h1>
+        <form id="pollForm">
+            <!-- Q1 -->
+            <div class="question-section">
+                <div class="question-title">Q1: What’s the best way to obtain something from your partner?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1_1" name="q1" value="Exigiéndolo" required>
+                        <label for="q1_1">Exigiéndolo</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1_2" name="q1" value="Usando el método del bocado">
+                        <label for="q1_2">Usando el método del bocado</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-section">
+                <div class="question-title">Q2: How can most arguments be avoided?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2_1" name="q2" value="Mandar un mensaje de WhatsApp en lugar de hablar cara a cara" required>
+                        <label for="q2_1">Mandar un mensaje de WhatsApp en lugar de hablar cara a cara</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_2" name="q2" value="Comunicar lo que piensan de manera tranquila y respetuosa">
+                        <label for="q2_2">Comunicar lo que piensan de manera tranquila y respetuosa</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_3" name="q2" value="Decir lo que sientes e irte sin escuchar al otro">
+                        <label for="q2_3">Decir lo que sientes e irte sin escuchar al otro</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-section">
+                <div class="question-title">Q3: What influences most how your partner perceives your message?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="El volumen de tu voz" required>
+                        <label for="q3_1">El volumen de tu voz</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="La expresión de tu cara">
+                        <label for="q3_2">La expresión de tu cara</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_3" name="q3" value="Las palabras que eliges">
+                        <label for="q3_3">Las palabras que eliges</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_4" name="q3" value="All of the above">
+                        <label for="q3_4">All of the above</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-section">
+                <div class="question-title">Q4: Which of these phrases would bother you most?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4_1" name="q4" value="¡No me interesa escucharte!" required>
+                        <label for="q4_1">¡No me interesa escucharte!</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_2" name="q4" value="¡Siempre con la misma excusa!">
+                        <label for="q4_2">¡Siempre con la misma excusa!</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4_3" name="q4" value="¡Ya te dije esto antes!">
+                        <label for="q4_3">¡Ya te dije esto antes!</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-section">
+                <div class="question-title">Q5: When you feel attacked, how do you usually respond?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q5_1" name="q5" value="Reacciona bien y mantiene la calma" required>
+                        <label for="q5_1">Reacciona bien y mantiene la calma</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5_2" name="q5" value="Reacciona mal y se defiende">
+                        <label for="q5_2">Reacciona mal y se defiende</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5_3" name="q5" value="Se cierra y deja de comunicarse">
+                        <label for="q5_3">Se cierra y deja de comunicarse</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="question-section">
+                <div class="question-title">Q6: ¿Qué sueles hacer cuando alguien te habla con enojo o te ataca verbalmente?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q6_1" name="q6" value="Aprendo algo de lo que dijo" required>
+                        <label for="q6_1">Aprendo algo de lo que dijo</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6_2" name="q6" value="Cerrarme y dejar de escuchar">
+                        <label for="q6_2">Cerrarme y dejar de escuchar</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Section -->
+            <div class="question-section">
+                <div class="question-title">Discuss:</div>
+                <div class="text-input-section">
+                    <label for="conversation" style="color: #666; font-size: 14px;">Sobre maneras de comunicarse que no hagan que su pareja se sienta atacada. Practíquenlo</label>
+                    <textarea id="conversation" name="conversation" placeholder="Write your answer here..." required></textarea>
+                    <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Email Section -->
+            <div class="question-section">
+                <div class="question-title"><label for="email">Email Address</label></div>
+                <div class="text-input-section">
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    <div class="error-message" id="emailError" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="question-section">
+                <div class="g-recaptcha" data-sitekey="6LeyoggsAAAAAAgXzEg9PAC9ypZtr-yyc24cAnN_"></div>
+                <div class="error-message" id="recaptchaError" style="display: none;"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Survey</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Clear</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            ✓ Survey submitted successfully!
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section" id="summarySection" style="display: none;">
+            <h2 class="summary-title">Summary of your answers</h2>
+            <div id="summaryContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Define questions for this survey
+        window.surveyQuestions = {
+            q1: "Q1: What’s the best way to obtain something from your partner?",
+            q2: "Q2: How can most arguments be avoided?",
+            q3: "Q3: What influences most how your partner perceives your message?",
+            q4: "Q4: Which of these phrases would bother you most?",
+            q5: "Q5: When you feel attacked, how do you usually respond?",
+            q6: "Q6: ¿Qué sueles hacer cuando alguien te habla con enojo o te ataca verbalmente?",
+            conversation: "Sobre maneras de comunicarse que no hagan que su pareja se sienta atacada. Practíquenlo"
+        };
+
+        // Define the chapter name for this survey
+        window.chapterName = "Chapter 18";
+    </script>
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("wZ_Z4F9Y-8CcFzD2g");
+        })();
+    </script>
+
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="survey.js?v=20250110005"></script>
+</body>
+</html>
