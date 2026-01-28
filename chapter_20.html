@@ -12,30 +12,26 @@
         <form id="pollForm">
             <!-- Q1 -->
             <div class="question-section">
-                <div class="question-title">Q1: Why don’t we like talking about our arguments?</div>
+                <div class="question-title">Q1: Why don't we like talking about our arguments?</div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q1_1" name="q1" value="We’re afraid the argument will restart" required>
-                        <label for="q1_1">We’re afraid the argument will restart</label>
+                        <input type="radio" id="q1_1" name="q1" value="We're afraid the argument will restart" required>
+                        <label for="q1_1">We're afraid the argument will restart</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q1_2" name="q1" value="It might lead to admitting partial fault">
                         <label for="q1_2">It might lead to admitting partial fault</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q1_3" name="q1" value="We believe there’s no point since we’re “right”">
-                        <label for="q1_3">We believe there’s no point since we’re “right”</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q1_4" name="q1" value="Ninguno">
-                        <label for="q1_4">Ninguno</label>
+                        <input type="radio" id="q1_3" name="q1" value="We believe there's no point since we're "right"">
+                        <label for="q1_3">We believe there's no point since we're "right"</label>
                     </div>
                 </div>
             </div>
 
             <!-- Q2 -->
             <div class="question-section">
-                <div class="question-title">Q2: After a fight, what’s the healthiest thing to do?</div>
+                <div class="question-title">Q2: After a fight, what's the healthiest thing to do?</div>
                 <div class="options">
                     <div class="option">
                         <input type="radio" id="q2_1" name="q2" value="Pretend nothing happened" required>
@@ -46,8 +42,12 @@
                         <label for="q2_2">Resume the argument to prove your point</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q2_3" name="q2" value="Wait until both are calm, then try to understand your partner’s perspective">
-                        <label for="q2_3">Wait until both are calm, then try to understand your partner’s perspective</label>
+                        <input type="radio" id="q2_3" name="q2" value="Wait until both are calm, then try to understand your partner's perspective">
+                        <label for="q2_3">Wait until both are calm, then try to understand your partner's perspective</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2_4" name="q2" value="Apologize and accept responsibility">
+                        <label for="q2_4">Apologize and accept responsibility</label>
                     </div>
                 </div>
             </div>
@@ -61,16 +61,12 @@
                         <label for="q3_1">It feels like surrendering control</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q3_2" name="q3" value="It’s hard to admit that we’ve made mistakes">
-                        <label for="q3_2">It’s hard to admit that we’ve made mistakes</label>
+                        <input type="radio" id="q3_2" name="q3" value="It's hard to admit that we've made mistakes">
+                        <label for="q3_2">It's hard to admit that we've made mistakes</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q3_3" name="q3" value="It can make us feel vulnerable">
                         <label for="q3_3">It can make us feel vulnerable</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q3_4" name="q3" value="Apologize and accept responsibility">
-                        <label for="q3_4">Apologize and accept responsibility</label>
                     </div>
                 </div>
             </div>
@@ -94,32 +90,18 @@
                 </div>
             </div>
 
-            <!-- Q5 -->
-            <div class="question-section">
-                <div class="question-title">Q5: Why shouldn’t conflicts be left unresolved?</div>
-                <div class="options">
-                    <div class="option">
-                        <input type="radio" id="q5_1" name="q5" value="Fosters more distance and resentment" required>
-                        <label for="q5_1">Fosters more distance and resentment</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q5_2" name="q5" value="Empathy and closeness grow">
-                        <label for="q5_2">Empathy and closeness grow</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q5_3" name="q5" value="No cambia nada, las discusiones siempre terminan igual">
-                        <label for="q5_3">No cambia nada, las discusiones siempre terminan igual</label>
-                    </div>
-                </div>
-            </div>
-
             <!-- Conversation Section -->
             <div class="question-section">
                 <div class="question-title">Discuss:</div>
                 <div class="text-input-section">
-                    <label for="conversation" style="color: #666; font-size: 14px;">Why shouldn’t conflicts be left unresolved?</label>
+                    <label for="conversation" style="color: #666; font-size: 14px;">Why shouldn't conflicts be left unresolved?</label>
                     <textarea id="conversation" name="conversation" placeholder="Write your answer here..." required></textarea>
                     <div class="error-message" id="textError" style="display: none;"></div>
+                </div>
+                <div class="text-input-section">
+                    <label for="conversation2" style="color: #666; font-size: 14px;">What's the most effective way to resolve them?</label>
+                    <textarea id="conversation2" name="conversation2" placeholder="Write your answer here..."></textarea>
+                    <div class="error-message" id="textError2" style="display: none;"></div>
                 </div>
             </div>
 
@@ -160,12 +142,12 @@
     <script>
         // Define questions for this survey
         window.surveyQuestions = {
-            q1: "Q1: Why don’t we like talking about our arguments?",
-            q2: "Q2: After a fight, what’s the healthiest thing to do?",
+            q1: "Q1: Why don't we like talking about our arguments?",
+            q2: "Q2: After a fight, what's the healthiest thing to do?",
             q3: "Q3: Why is asking for forgiveness often difficult?",
-            q4: "Q4: What changes when, instead of focusing on who’s right, both partners try to understand how the other felt?",
-            q5: "Q5: Why shouldn’t conflicts be left unresolved?",
-            conversation: "Why shouldn’t conflicts be left unresolved?"
+            q4: "Q4: What changes when, instead of focusing on who's right, both partners try to understand how the other felt?",
+            conversation: "Why shouldn't conflicts be left unresolved?",
+            conversation2: "What's the most effective way to resolve them?"
         };
 
         // Define the chapter name for this survey

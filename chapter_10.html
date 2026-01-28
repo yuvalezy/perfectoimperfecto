@@ -121,16 +121,16 @@
                         <label for="q4_1">I seek his help in areas where he excels, reinforcing his sense of worth</label>
                     </div>
                     <div class="checkbox-option">
-                        <input type="checkbox" id="q4_2" name="q4" value="Tomo la iniciativa de darle a mi esposo espacio para salir con sus amigos o realizar actividades que le gusten">
-                        <label for="q4_2">Tomo la iniciativa de darle a mi esposo espacio para salir con sus amigos o realizar actividades que le gusten</label>
+                        <input type="checkbox" id="q4_2" name="q4" value="I encourage him to spend time with friends and engage in activities he enjoys.">
+                        <label for="q4_2">I encourage him to spend time with friends and engage in activities he enjoys.</label>
                     </div>
                     <div class="checkbox-option">
                         <input type="checkbox" id="q4_3" name="q4" value="I respect our differences, and when he overlooks details I find obvious, I wait for the right time to discuss them">
                         <label for="q4_3">I respect our differences, and when he overlooks details I find obvious, I wait for the right time to discuss them</label>
                     </div>
                     <div class="checkbox-option">
-                        <input type="checkbox" id="q4_4" name="q4" value="De vez en cuando le preparo una comida que le encanta a pesar de que no es la mas saludable">
-                        <label for="q4_4">De vez en cuando le preparo una comida que le encanta a pesar de que no es la mas saludable</label>
+                        <input type="checkbox" id="q4_4" name="q4" value="From time to time, I prepare a meal he loves even if it's not the healthiest.">
+                        <label for="q4_4">From time to time, I prepare a meal he loves even if it's not the healthiest.</label>
                     </div>
                 </div>
             </div>
@@ -193,7 +193,7 @@
             // Q1 -> Q2 logic
             q1Radios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    if (this.value === 'Si') {
+                    if (this.value === 'Yes') {
                         q2Section.classList.remove('hidden');
                     } else {
                         q2Section.classList.add('hidden');
@@ -208,7 +208,7 @@
             // Q3 -> Q4 logic
             q3Radios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    if (this.value === 'Si') {
+                    if (this.value === 'Yes') {
                         q4Section.classList.remove('hidden');
                     } else {
                         q4Section.classList.add('hidden');
