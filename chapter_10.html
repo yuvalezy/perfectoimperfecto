@@ -59,9 +59,9 @@
         <h1>After watching the video, complete this exercise:</h1>
         <form id="pollForm">
 
-            <!-- Q1 - Radio -->
+            <!-- Q1 - For Men: Are you aware? -->
             <div class="question-section">
-                <div class="question-title">Q1: For Men</div>
+                <div class="question-title">Q1: For Men — Are you aware of your wife's emotional needs? (the 3 A's: Affection, Attention, Appreciation)</div>
                 <div class="options">
                     <div class="option">
                         <input type="radio" id="q1_1" name="q1" value="Yes" required>
@@ -74,63 +74,74 @@
                 </div>
             </div>
 
-            <!-- Q2 - Checkbox -->
+            <!-- Q2 - If yes, do your actions reflect that awareness? -->
             <div class="question-section conditional-section hidden" id="q2-section">
-                <div class="question-title">Q2: Are you aware of your wife’s emotional needs? (the 3 A’s: Affection, Attention, Appreciation)</div>
-                <div class="checkbox-group">
-                    <div class="checkbox-option">
-                        <input type="checkbox" id="q2_1" name="q2" value="I frequently express my feelings to my wife (“I love you,” “I appreciate you”)">
-                        <label for="q2_1">I frequently express my feelings to my wife (“I love you,” “I appreciate you”)</label>
-                    </div>
-                    <div class="checkbox-option">
-                        <input type="checkbox" id="q2_2" name="q2" value="I show my feelings through gestures such as helping with tasks, caring for the children, or solving problems together.">
-                        <label for="q2_2">I show my feelings through gestures such as helping with tasks, caring for the children, or solving problems together.</label>
-                    </div>
-                    <div class="checkbox-option">
-                        <input type="checkbox" id="q2_3" name="q2" value="I plan dates, trips, or quality time together.">
-                        <label for="q2_3">I plan dates, trips, or quality time together.</label>
-                    </div>
-                    <div class="checkbox-option">
-                        <input type="checkbox" id="q2_4" name="q2" value="I give thoughtful gifts or gestures whether on special occasions or spontaneously.">
-                        <label for="q2_4">I give thoughtful gifts or gestures whether on special occasions or spontaneously.</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Q3 - Radio -->
-            <div class="question-section">
-                <div class="question-title">Q3: If yes, do your actions reflect that awareness?</div>
+                <div class="question-title">Q2: If yes, do your actions reflect that awareness?</div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q3_1" name="q3" value="I seek his help in areas where he excels, reinforcing his sense of worth." required>
-                        <label for="q3_1">I seek his help in areas where he excels, reinforcing his sense of worth.</label>
+                        <input type="radio" id="q2_1" name="q2" value="Yes">
+                        <label for="q2_1">Yes</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q3_2" name="q3" value="I encourage him to spend time with friends and engage in activities he enjoys.">
-                        <label for="q3_2">I encourage him to spend time with friends and engage in activities he enjoys.</label>
+                        <input type="radio" id="q2_2" name="q2" value="No">
+                        <label for="q2_2">No</label>
                     </div>
                 </div>
             </div>
 
-            <!-- Q4 - Checkbox -->
-            <div class="question-section conditional-section hidden" id="q4-section">
-                <div class="question-title">Q4: For Women</div>
+            <!-- Q2 Examples - Checkbox -->
+            <div class="question-section conditional-section hidden" id="q2-examples-section">
+                <div class="question-title">Examples:</div>
                 <div class="checkbox-group">
                     <div class="checkbox-option">
-                        <input type="checkbox" id="q4_1" name="q4" value="I seek his help in areas where he excels, reinforcing his sense of worth">
-                        <label for="q4_1">I seek his help in areas where he excels, reinforcing his sense of worth</label>
+                        <input type="checkbox" id="q2e_1" name="q2_examples" value="I frequently express my feelings to my wife (&quot;I love you,&quot; &quot;I appreciate you&quot;)">
+                        <label for="q2e_1">I frequently express my feelings to my wife ("I love you," "I appreciate you")</label>
                     </div>
                     <div class="checkbox-option">
-                        <input type="checkbox" id="q4_2" name="q4" value="I encourage him to spend time with friends and engage in activities he enjoys.">
-                        <label for="q4_2">I encourage him to spend time with friends and engage in activities he enjoys.</label>
+                        <input type="checkbox" id="q2e_2" name="q2_examples" value="I show my feelings through gestures such as helping with tasks, caring for the children, or solving problems together.">
+                        <label for="q2e_2">I show my feelings through gestures such as helping with tasks, caring for the children, or solving problems together.</label>
                     </div>
                     <div class="checkbox-option">
-                        <input type="checkbox" id="q4_3" name="q4" value="I respect our differences, and when he overlooks details I find obvious, I wait for the right time to discuss them">
-                        <label for="q4_3">I respect our differences, and when he overlooks details I find obvious, I wait for the right time to discuss them</label>
+                        <input type="checkbox" id="q2e_3" name="q2_examples" value="I plan dates, trips, or quality time together.">
+                        <label for="q2e_3">I plan dates, trips, or quality time together.</label>
                     </div>
                     <div class="checkbox-option">
-                        <input type="checkbox" id="q4_4" name="q4" value="From time to time, I prepare a meal he loves even if it's not the healthiest.">
-                        <label for="q4_4">From time to time, I prepare a meal he loves even if it's not the healthiest.</label>
+                        <input type="checkbox" id="q2e_4" name="q2_examples" value="I give thoughtful gifts or gestures whether on special occasions or spontaneously.">
+                        <label for="q2e_4">I give thoughtful gifts or gestures whether on special occasions or spontaneously.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 - For Women: Are you aware? -->
+            <div class="question-section">
+                <div class="question-title">Q3: For Women — Are you aware of your husband's needs? (the 3 P's: Power, Prestige, Pleasure)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3_1" name="q3" value="Yes" required>
+                        <label for="q3_1">Yes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3_2" name="q3" value="No">
+                        <label for="q3_2">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 Examples - Checkbox -->
+            <div class="question-section conditional-section hidden" id="q3-examples-section">
+                <div class="question-title">Examples:</div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q3e_1" name="q3_examples" value="I seek his help in areas where he excels, reinforcing his sense of worth.">
+                        <label for="q3e_1">I seek his help in areas where he excels, reinforcing his sense of worth.</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q3e_2" name="q3_examples" value="I encourage him to spend time with friends and engage in activities he enjoys.">
+                        <label for="q3e_2">I encourage him to spend time with friends and engage in activities he enjoys.</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q3e_3" name="q3_examples" value="I respect our differences, and when he overlooks details I find obvious, I wait for the right time to discuss them.">
+                        <label for="q3e_3">I respect our differences, and when he overlooks details I find obvious, I wait for the right time to discuss them.</label>
                     </div>
                 </div>
             </div>
@@ -139,7 +150,7 @@
             <div class="question-section">
                 <div class="question-title">Discuss:</div>
                 <div class="text-input-section">
-                    <label for="conversation" style="color: #666; font-size: 14px;">What action can I take today to demonstrate my commitment to giving in this relationship, without expecting results in return?</label>
+                    <label for="conversation" style="color: #666; font-size: 14px;">What is one specific action you can take today to demonstrate your commitment to giving in your relationship — without expecting anything in return?</label>
                     <textarea id="conversation" name="conversation" placeholder="Write your answer here..." required></textarea>
                     <div class="error-message" id="textError" style="display: none;"></div>
                 </div>
@@ -184,38 +195,49 @@
         document.addEventListener('DOMContentLoaded', function() {
             const q1Radios = document.querySelectorAll('input[name="q1"]');
             const q2Section = document.getElementById('q2-section');
-            const q2Checkboxes = document.querySelectorAll('#q2-section input[type="checkbox"]');
+            const q2Radios = document.querySelectorAll('input[name="q2"]');
+            const q2ExamplesSection = document.getElementById('q2-examples-section');
+            const q2ExamplesCheckboxes = document.querySelectorAll('#q2-examples-section input[type="checkbox"]');
 
             const q3Radios = document.querySelectorAll('input[name="q3"]');
-            const q4Section = document.getElementById('q4-section');
-            const q4Checkboxes = document.querySelectorAll('#q4-section input[type="checkbox"]');
+            const q3ExamplesSection = document.getElementById('q3-examples-section');
+            const q3ExamplesCheckboxes = document.querySelectorAll('#q3-examples-section input[type="checkbox"]');
 
-            // Q1 -> Q2 logic
+            // Q1 -> Q2 logic (Men: aware? -> actions reflect?)
             q1Radios.forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (this.value === 'Yes') {
                         q2Section.classList.remove('hidden');
                     } else {
                         q2Section.classList.add('hidden');
-                        // Clear Q2 selections
-                        q2Checkboxes.forEach(checkbox => {
-                            checkbox.checked = false;
-                        });
+                        q2ExamplesSection.classList.add('hidden');
+                        // Clear Q2 and examples
+                        q2Radios.forEach(r => r.checked = false);
+                        q2ExamplesCheckboxes.forEach(cb => cb.checked = false);
                     }
                 });
             });
 
-            // Q3 -> Q4 logic
+            // Q2 -> Q2 Examples logic (actions reflect? -> show examples)
+            q2Radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'Yes') {
+                        q2ExamplesSection.classList.remove('hidden');
+                    } else {
+                        q2ExamplesSection.classList.add('hidden');
+                        q2ExamplesCheckboxes.forEach(cb => cb.checked = false);
+                    }
+                });
+            });
+
+            // Q3 -> Q3 Examples logic (Women: aware? -> show examples)
             q3Radios.forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (this.value === 'Yes') {
-                        q4Section.classList.remove('hidden');
+                        q3ExamplesSection.classList.remove('hidden');
                     } else {
-                        q4Section.classList.add('hidden');
-                        // Clear Q4 selections
-                        q4Checkboxes.forEach(checkbox => {
-                            checkbox.checked = false;
-                        });
+                        q3ExamplesSection.classList.add('hidden');
+                        q3ExamplesCheckboxes.forEach(cb => cb.checked = false);
                     }
                 });
             });
@@ -223,11 +245,12 @@
 
         // Define questions for this survey
         window.surveyQuestions = {
-            q1: "Q1: For Men",
-            q2: "Q2: Are you aware of your wife’s emotional needs? (the 3 A’s: Affection, Attention, Appreciation)",
-            q3: "Q3: If yes, do your actions reflect that awareness?",
-            q4: "Q4: For Women",
-            conversation: "What action can I take today to demonstrate my commitment to giving in this relationship, without expecting results in return?"
+            q1: "Q1: For Men — Are you aware of your wife's emotional needs? (the 3 A's: Affection, Attention, Appreciation)",
+            q2: "Q2: If yes, do your actions reflect that awareness?",
+            q2_examples: "Examples (Men):",
+            q3: "Q3: For Women — Are you aware of your husband's needs? (the 3 P's: Power, Prestige, Pleasure)",
+            q3_examples: "Examples (Women):",
+            conversation: "What is one specific action you can take today to demonstrate your commitment to giving in your relationship — without expecting anything in return?"
         };
 
         // Define the chapter name for this survey
