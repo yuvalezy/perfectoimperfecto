@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfecto Imperfecto - Template Manager</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+        }
+
+        /* ---- Top bar ---- */
+        .topbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .topbar h1 { font-size: 20px; font-weight: 600; }
+        .topbar-actions { display: flex; gap: 10px; align-items: center; }
+        .topbar-btn {
+            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,.6);
+            border-radius: 8px;
+            background: transparent;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .topbar-btn:hover { background: rgba(255,255,255,.2); border-color: #fff; }
+        .topbar-btn.primary { background: rgba(255,255,255,.25); border-color: #fff; }
+
+        /* ---- Layout ---- */
+        .layout { display: flex; height: calc(100vh - 56px); }
+
+        /* ---- Sidebar ---- */
+        .sidebar {
+            width: 300px;
+            min-width: 300px;
+            background: #fff;
+            border-right: 1px solid #e0e0e0;
+            overflow-y: auto;
+            padding: 0;
+        }
+        .sidebar-group-title {
+            padding: 14px 16px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+        .sidebar-group-title:first-child { border-top: none; }
+        .sidebar-item {
+            padding: 10px 16px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all .15s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar-item:hover { background: #f5f7ff; }
+        .sidebar-item.active { background: #eef1ff; border-left-color: #667eea; }
+        .sidebar-item .name { font-size: 14px; }
+        .sidebar-item .badge {
+            font-size: 11px;
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        /* ---- Main content ---- */
+        .main { flex: 1; overflow-y: auto; padding: 24px; }
+
+        /* ---- Welcome screen ---- */
+        .welcome {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            color: #888;
+        }
+        .welcome h2 { font-size: 24px; margin-bottom: 8px; color: #555; }
+        .welcome p { font-size: 15px; }
+
+        /* ---- Editor ---- */
+        .editor { max-width: 900px; margin: 0 auto; }
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .editor-header h2 { font-size: 22px; color: #333; }
+        .editor-actions { display: flex; gap: 8px; }
+
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .btn-save { background: #667eea; color: #fff; }
+        .btn-save:hover { background: #5a6fd6; }
+        .btn-preview { background: #eee; color: #333; }
+        .btn-preview:hover { background: #ddd; }
+        .btn-danger { background: #ff4757; color: #fff; }
+        .btn-danger:hover { background: #e0394a; }
+        .btn-success { background: #2ed573; color: #fff; }
+        .btn-success:hover { background: #26b85f; }
+        .btn-add {
+            background: #f0f2f5;
+            color: #667eea;
+            border: 2px dashed #667eea;
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+        }
+        .btn-add:hover { background: #eef1ff; }
+
+        /* ---- Card ---- */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.08);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .card-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        /* ---- Form fields ---- */
+        .field { margin-bottom: 16px; }
+        .field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        .field input[type="text"],
+        .field textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color .2s;
+        }
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .field textarea { resize: vertical; min-height: 60px; }
+
+        /* ---- Question card ---- */
+        .question-card {
+            background: #fff;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .question-card.radio { border-left: 4px solid #667eea; }
+        .question-card.checkbox { border-left: 4px solid #ff6b81; }
+        .question-card.textarea { border-left: 4px solid #2ed573; }
+
+        .question-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .question-type-badge {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .question-type-badge.radio { background: #eef1ff; color: #667eea; }
+        .question-type-badge.checkbox { background: #fff0f0; color: #ff6b81; }
+        .question-type-badge.textarea { background: #e8faf0; color: #2ed573; }
+
+        .question-delete {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .question-delete:hover { color: #ff4757; background: #fff5f5; }
+
+        /* ---- Options list ---- */
+        .option-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .option-row input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 2px solid #e8e8e8;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .option-row input:focus { outline: none; border-color: #667eea; }
+        .option-remove {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .option-remove:hover { color: #ff4757; }
+
+        .add-option-btn {
+            background: none;
+            border: none;
+            color: #667eea;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 4px 0;
+            font-weight: 500;
+        }
+        .add-option-btn:hover { text-decoration: underline; }
+
+        /* Conditional toggle */
+        .conditional-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+        .conditional-toggle input { cursor: pointer; }
+
+        /* ---- Modal ---- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 8px 32px rgba(0,0,0,.2);
+        }
+        .modal h3 { margin-bottom: 16px; font-size: 18px; }
+        .modal .field { margin-bottom: 16px; }
+        .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+
+        /* ---- Toast ---- */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 14px 24px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 16px rgba(0,0,0,.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all .3s;
+            z-index: 300;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.success { background: #2ed573; }
+        .toast.error { background: #ff4757; }
+        .toast.info { background: #667eea; }
+
+        /* ---- Git panel ---- */
+        .git-panel {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 56px;
+            width: 400px;
+            height: calc(100vh - 56px);
+            background: #fff;
+            border-left: 1px solid #e0e0e0;
+            box-shadow: -4px 0 16px rgba(0,0,0,.08);
+            z-index: 150;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        .git-panel.open { display: block; }
+        .git-panel h3 { margin-bottom: 16px; }
+        .git-changes {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .git-changes .change { padding: 3px 0; }
+        .git-changes .change.modified { color: #e67e22; }
+        .git-changes .change.added { color: #2ed573; }
+        .git-changes .change.deleted { color: #ff4757; }
+        .git-log {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            color: #666;
+        }
+        .git-log .entry { padding: 2px 0; }
+
+        /* ---- Unsaved dot ---- */
+        .unsaved-dot {
+            display: none;
+            width: 8px;
+            height: 8px;
+            background: #ff4757;
+            border-radius: 50%;
+            margin-left: 6px;
+        }
+        .unsaved-dot.active { display: inline-block; }
+
+        /* ---- Add question type selector ---- */
+        .add-question-types {
+            display: none;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .add-question-types.open { display: flex; }
+        .type-btn {
+            padding: 8px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all .2s;
+        }
+        .type-btn:hover { border-color: #667eea; background: #f5f7ff; }
+        .type-btn.radio { color: #667eea; }
+        .type-btn.checkbox { color: #ff6b81; }
+        .type-btn.textarea { color: #2ed573; }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+    <h1>Perfecto Imperfecto - Template Manager</h1>
+    <div class="topbar-actions">
+        <button class="topbar-btn" onclick="toggleGitPanel()">Git Status</button>
+        <button class="topbar-btn primary" onclick="openCommitModal()">Commit & Push</button>
+    </div>
+</div>
+
+<div class="layout">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar"></div>
+
+    <!-- Main -->
+    <div class="main" id="main">
+        <div class="welcome">
+            <h2>Welcome</h2>
+            <p>Select a chapter from the left panel to start editing.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Git panel -->
+<div class="git-panel" id="gitPanel">
+    <h3>Git Status</h3>
+    <div id="gitBranch" style="margin-bottom:12px; font-size:14px; color:#667eea;"></div>
+    <div id="gitChanges" class="git-changes"></div>
+    <h3 style="margin-top:20px;">Recent Commits</h3>
+    <div id="gitLog" class="git-log"></div>
+</div>
+
+<!-- Commit modal -->
+<div class="modal-overlay" id="commitModal">
+    <div class="modal">
+        <h3>Commit & Push Changes</h3>
+        <p style="color:#666; font-size:14px; margin-bottom:16px;">
+            This will save all your changes to Git and upload them. Write a short description of what you changed.
+        </p>
+        <div class="field">
+            <label>Commit Message</label>
+            <input type="text" id="commitMessage" value="Update survey templates" placeholder="Describe your changes...">
+        </div>
+        <div id="commitStatus" style="font-size:13px; color:#666; margin-bottom:12px;"></div>
+        <div class="modal-actions">
+            <button class="btn btn-preview" onclick="closeCommitModal()">Cancel</button>
+            <button class="btn btn-save" id="commitBtn" onclick="doCommitAndPush()">Commit & Push</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ---------------------------------------------------------------------------
+// State
+// ---------------------------------------------------------------------------
+let chapters = [];
+let currentChapter = null;
+let currentData = null;
+let unsavedChanges = false;
+
+// ---------------------------------------------------------------------------
+// Init
+// ---------------------------------------------------------------------------
+async function init() {
+    await loadChapters();
+}
+
+async function loadChapters() {
+    const res = await fetch('/api/chapters');
+    chapters = await res.json();
+    renderSidebar();
+}
+
+function renderSidebar() {
+    const sidebar = document.getElementById('sidebar');
+
+    const spanish = chapters.filter(c => c.lang === 'es');
+    const english = chapters.filter(c => c.lang === 'en');
+
+    let html = '';
+
+    html += '<div class="sidebar-group-title">Spanish Chapters</div>';
+    spanish.forEach(ch => {
+        const active = currentChapter === ch.filename ? ' active' : '';
+        html += `<div class="sidebar-item${active}" onclick="selectChapter('${ch.filename}')">
+            <span class="name">${ch.chapterName}</span>
+            <span class="badge">${ch.questionCount} Q</span>
+        </div>`;
+    });
+
+    html += '<div class="sidebar-group-title">English Chapters</div>';
+    english.forEach(ch => {
+        const active = currentChapter === ch.filename ? ' active' : '';
+        html += `<div class="sidebar-item${active}" onclick="selectChapter('${ch.filename}')">
+            <span class="name">${ch.chapterName}</span>
+            <span class="badge">${ch.questionCount} Q</span>
+        </div>`;
+    });
+
+    sidebar.innerHTML = html;
+}
+
+// ---------------------------------------------------------------------------
+// Select chapter and render editor
+// ---------------------------------------------------------------------------
+async function selectChapter(filename) {
+    if (unsavedChanges) {
+        if (!confirm('You have unsaved changes. Discard them?')) return;
+    }
+
+    currentChapter = filename;
+    const res = await fetch(`/api/chapters/${filename}`);
+    currentData = await res.json();
+    unsavedChanges = false;
+    renderSidebar();
+    renderEditor();
+}
+
+function renderEditor() {
+    const main = document.getElementById('main');
+    const d = currentData;
+
+    let html = `
+    <div class="editor">
+        <div class="editor-header">
+            <h2>${d.chapterName} <span class="unsaved-dot" id="unsavedDot"></span></h2>
+            <div class="editor-actions">
+                <button class="btn btn-preview" onclick="previewChapter()">Preview</button>
+                <button class="btn btn-save" onclick="saveChapter()">Save Changes</button>
+            </div>
+        </div>
+
+        <!-- Chapter meta -->
+        <div class="card">
+            <div class="card-title">Chapter Settings</div>
+            <div class="field">
+                <label>Page Title</label>
+                <input type="text" id="ed-title" value="${esc(d.title)}" oninput="markDirty()">
+            </div>
+            <div class="field">
+                <label>Chapter Name</label>
+                <input type="text" id="ed-chapterName" value="${esc(d.chapterName)}" oninput="markDirty()">
+            </div>
+            <div class="field">
+                <label>Main Instruction (heading)</label>
+                <input type="text" id="ed-instruction" value="${esc(d.mainInstruction)}" oninput="markDirty()">
+            </div>
+        </div>
+
+        <!-- Questions -->
+        <div class="card">
+            <div class="card-title">Questions</div>
+            <div id="questionsContainer">`;
+
+    d.questions.forEach((q, i) => {
+        html += renderQuestionCard(q, i);
+    });
+
+    html += `
+            </div>
+            <button class="btn btn-add" onclick="toggleAddQuestion()">+ Add Question</button>
+            <div class="add-question-types" id="addQuestionTypes">
+                <button class="type-btn radio" onclick="addQuestion('radio')">Radio (Yes/No)</button>
+                <button class="type-btn checkbox" onclick="addQuestion('checkbox')">Checkbox (Multi-select)</button>
+                <button class="type-btn textarea" onclick="addQuestion('textarea')">Text / Conversation</button>
+            </div>
+        </div>
+    </div>`;
+
+    main.innerHTML = html;
+}
+
+function renderQuestionCard(q, index) {
+    let html = `<div class="question-card ${q.type}" data-index="${index}">
+        <div class="question-card-header">
+            <span class="question-type-badge ${q.type}">${q.type}</span>
+            <button class="question-delete" onclick="removeQuestion(${index})" title="Delete question">&times;</button>
+        </div>`;
+
+    // Title
+    html += `<div class="field">
+        <label>Question Title</label>
+        <input type="text" value="${esc(q.title)}" onchange="updateQuestion(${index}, 'title', this.value)">
+    </div>`;
+
+    if (q.type === 'radio' || q.type === 'checkbox') {
+        // Name
+        html += `<div class="field">
+            <label>Field Name (e.g. q1, q2)</label>
+            <input type="text" value="${esc(q.name)}" onchange="updateQuestion(${index}, 'name', this.value)">
+        </div>`;
+
+        // Options
+        html += '<div class="field"><label>Answer Options</label>';
+        q.options.forEach((opt, j) => {
+            html += `<div class="option-row">
+                <input type="text" value="${esc(opt)}" onchange="updateOption(${index}, ${j}, this.value)">
+                <button class="option-remove" onclick="removeOption(${index}, ${j})" title="Remove">&times;</button>
+            </div>`;
+        });
+        html += `<button class="add-option-btn" onclick="addOption(${index})">+ Add option</button>`;
+        html += '</div>';
+
+        // Conditional toggle
+        html += `<div class="conditional-toggle">
+            <input type="checkbox" id="cond-${index}" ${q.conditional ? 'checked' : ''} onchange="updateQuestion(${index}, 'conditional', this.checked)">
+            <label for="cond-${index}">Conditional (hidden until triggered by a previous question)</label>
+        </div>`;
+        if (q.conditional) {
+            html += `<div class="field" style="margin-top:8px">
+                <label>Section ID (e.g. q2-section)</label>
+                <input type="text" value="${esc(q.sectionId || '')}" onchange="updateQuestion(${index}, 'sectionId', this.value)">
+            </div>`;
+        }
+    } else if (q.type === 'textarea') {
+        html += `<div class="field">
+            <label>Field Name</label>
+            <input type="text" value="${esc(q.name)}" onchange="updateQuestion(${index}, 'name', this.value)">
+        </div>`;
+        html += `<div class="field">
+            <label>Description / Prompt</label>
+            <textarea onchange="updateQuestion(${index}, 'label', this.value)">${esc(q.label)}</textarea>
+        </div>`;
+        html += `<div class="field">
+            <label>Placeholder Text</label>
+            <input type="text" value="${esc(q.placeholder)}" onchange="updateQuestion(${index}, 'placeholder', this.value)">
+        </div>`;
+    }
+
+    html += '</div>';
+    return html;
+}
+
+// ---------------------------------------------------------------------------
+// Question CRUD
+// ---------------------------------------------------------------------------
+function updateQuestion(index, field, value) {
+    currentData.questions[index][field] = value;
+    markDirty();
+    // Re-render if conditional changed (to show/hide sectionId field)
+    if (field === 'conditional') renderEditor();
+}
+
+function updateOption(qIndex, optIndex, value) {
+    currentData.questions[qIndex].options[optIndex] = value;
+    markDirty();
+}
+
+function addOption(qIndex) {
+    currentData.questions[qIndex].options.push('New option');
+    markDirty();
+    renderEditor();
+}
+
+function removeOption(qIndex, optIndex) {
+    if (currentData.questions[qIndex].options.length <= 1) {
+        showToast('A question must have at least one option.', 'error');
+        return;
+    }
+    currentData.questions[qIndex].options.splice(optIndex, 1);
+    markDirty();
+    renderEditor();
+}
+
+function addQuestion(type) {
+    const count = currentData.questions.length;
+    const name = 'q' + (count + 1);
+    const newQ = { type, name, title: 'New Question', conditional: false, sectionId: '' };
+    if (type === 'radio') {
+        newQ.options = ['Yes', 'No'];
+    } else if (type === 'checkbox') {
+        newQ.options = ['Option 1', 'Option 2'];
+    } else {
+        newQ.label = 'Enter your prompt text here';
+        newQ.placeholder = 'Write your answer here...';
+    }
+    currentData.questions.push(newQ);
+    markDirty();
+    renderEditor();
+    // Scroll to bottom
+    document.getElementById('questionsContainer').lastElementChild.scrollIntoView({ behavior: 'smooth' });
+}
+
+function removeQuestion(index) {
+    if (!confirm('Delete this question?')) return;
+    currentData.questions.splice(index, 1);
+    markDirty();
+    renderEditor();
+}
+
+function toggleAddQuestion() {
+    document.getElementById('addQuestionTypes').classList.toggle('open');
+}
+
+// ---------------------------------------------------------------------------
+// Save
+// ---------------------------------------------------------------------------
+async function saveChapter() {
+    // Gather meta fields
+    currentData.title = document.getElementById('ed-title').value;
+    currentData.chapterName = document.getElementById('ed-chapterName').value;
+    currentData.mainInstruction = document.getElementById('ed-instruction').value;
+
+    const res = await fetch(`/api/chapters/${currentChapter}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(currentData)
+    });
+
+    const result = await res.json();
+    if (result.success) {
+        unsavedChanges = false;
+        const dot = document.getElementById('unsavedDot');
+        if (dot) dot.classList.remove('active');
+        showToast('Saved successfully!', 'success');
+        loadChapters(); // Refresh sidebar counts
+    } else {
+        showToast('Error: ' + result.error, 'error');
+    }
+}
+
+function markDirty() {
+    unsavedChanges = true;
+    const dot = document.getElementById('unsavedDot');
+    if (dot) dot.classList.add('active');
+}
+
+// ---------------------------------------------------------------------------
+// Preview
+// ---------------------------------------------------------------------------
+function previewChapter() {
+    window.open(`/preview/${currentChapter}`, '_blank');
+}
+
+// ---------------------------------------------------------------------------
+// Git
+// ---------------------------------------------------------------------------
+async function toggleGitPanel() {
+    const panel = document.getElementById('gitPanel');
+    if (panel.classList.contains('open')) {
+        panel.classList.remove('open');
+        return;
+    }
+    panel.classList.add('open');
+    await refreshGitStatus();
+}
+
+async function refreshGitStatus() {
+    try {
+        const [statusRes, logRes] = await Promise.all([
+            fetch('/api/git/status'),
+            fetch('/api/git/log')
+        ]);
+        const status = await statusRes.json();
+        const log = await logRes.json();
+
+        document.getElementById('gitBranch').textContent = 'Branch: ' + status.branch;
+
+        const changesEl = document.getElementById('gitChanges');
+        if (status.changes.length === 0) {
+            changesEl.innerHTML = '<div style="color:#2ed573">No pending changes</div>';
+        } else {
+            changesEl.innerHTML = status.changes.map(c => {
+                const type = c.trim().startsWith('M') ? 'modified' : c.trim().startsWith('?') ? 'added' : 'deleted';
+                return `<div class="change ${type}">${esc(c)}</div>`;
+            }).join('');
+        }
+
+        const logEl = document.getElementById('gitLog');
+        logEl.innerHTML = log.log.map(l => `<div class="entry">${esc(l)}</div>`).join('');
+    } catch (err) {
+        document.getElementById('gitChanges').innerHTML = '<div style="color:#ff4757">Could not fetch git status</div>';
+    }
+}
+
+function openCommitModal() {
+    document.getElementById('commitModal').classList.add('active');
+    document.getElementById('commitStatus').textContent = '';
+    document.getElementById('commitMessage').value = 'Update survey templates';
+    document.getElementById('commitBtn').disabled = false;
+}
+
+function closeCommitModal() {
+    document.getElementById('commitModal').classList.remove('active');
+}
+
+async function doCommitAndPush() {
+    const message = document.getElementById('commitMessage').value.trim();
+    if (!message) {
+        showToast('Please enter a commit message.', 'error');
+        return;
+    }
+
+    const btn = document.getElementById('commitBtn');
+    const statusEl = document.getElementById('commitStatus');
+    btn.disabled = true;
+    btn.textContent = 'Working...';
+    statusEl.textContent = 'Committing and pushing...';
+    statusEl.style.color = '#667eea';
+
+    try {
+        const res = await fetch('/api/git/commit-and-push', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+        const result = await res.json();
+
+        if (result.success) {
+            statusEl.textContent = result.message;
+            statusEl.style.color = '#2ed573';
+            showToast(result.message, 'success');
+            setTimeout(() => closeCommitModal(), 2000);
+            refreshGitStatus();
+        } else {
+            statusEl.textContent = 'Error: ' + result.error;
+            statusEl.style.color = '#ff4757';
+            showToast('Error: ' + result.error, 'error');
+        }
+    } catch (err) {
+        statusEl.textContent = 'Error: ' + err.message;
+        statusEl.style.color = '#ff4757';
+        showToast('Connection error', 'error');
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Commit & Push';
+}
+
+// ---------------------------------------------------------------------------
+// Toast
+// ---------------------------------------------------------------------------
+function showToast(msg, type) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.className = 'toast ' + type + ' show';
+    setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ---------------------------------------------------------------------------
+// Utility
+// ---------------------------------------------------------------------------
+function esc(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+// Warn before leaving with unsaved changes
+window.addEventListener('beforeunload', e => {
+    if (unsavedChanges) {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+});
+
+// Init
+init();
+</script>
+</body>
+</html>
