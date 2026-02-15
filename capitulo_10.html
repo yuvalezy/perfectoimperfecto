@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capítulo 10 - Después de ver el video</title>
+    <title>Capítulo 10 - Después de ver el vídeo</title>
     <link rel="stylesheet" href="survey.css">
     <style>
         .checkbox-group {
@@ -56,16 +56,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Después de ver el video, realiza este ejercicio:</h1>
+        <h1>Después de ver el vídeo, completa este ejercicio:</h1>
         <form id="pollForm">
 
-            <!-- Q1 - Radio -->
+            <!-- Encabezado de Sección: Para los hombres -->
             <div class="question-section">
-                <div class="question-title">Q1: ¿Estás consciente de las necesidades afectivas de tu esposa?</div>
+                <h2 style="color: #667eea; margin-bottom: 20px; font-size: 1.3em;">Para ser llenado por los hombres</h2>
+            </div>
+
+            <!-- Q1 - ¿Estás consciente? -->
+            <div class="question-section">
+                <div class="question-title">Q1: ¿Estás consciente de las necesidades afectivas de tu esposa? (las 3 A: Afecto, Atención, Aprecio)</div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q1_1" name="q1" value="Si" required>
-                        <label for="q1_1">Si</label>
+                        <input type="radio" id="q1_1" name="q1" value="Sí" required>
+                        <label for="q1_1">Sí</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q1_2" name="q1" value="No">
@@ -74,9 +79,9 @@
                 </div>
             </div>
 
-            <!-- Q2 - Checkbox -->
+            <!-- Q2 - Ejemplos como checkboxes, visible si Q1=Sí -->
             <div class="question-section conditional-section hidden" id="q2-section">
-                <div class="question-title">Q2: ¿Tus acciones son congruentes con tu respuesta?</div>
+                <div class="question-title">Q2: Aquí te damos algunos ejemplos para que verifiques si tu respuesta se adapta con lo que significa tener en cuenta sus necesidades afectivas. Marca con un gancho en las que aplique:</div>
                 <div class="checkbox-group">
                     <div class="checkbox-option">
                         <input type="checkbox" id="q2_1" name="q2" value="Manifiestas tus sentimientos afectivos (te quiero, te amo, me gustas…) frecuentamente a tu esposa">
@@ -97,13 +102,18 @@
                 </div>
             </div>
 
-            <!-- Q3 - Radio -->
+            <!-- Encabezado de Sección: Para las mujeres -->
             <div class="question-section">
-                <div class="question-title">Q3: ¿Estás consciente de las necesidades de tu esposo?</div>
+                <h2 style="color: #667eea; margin-bottom: 20px; font-size: 1.3em;">Para ser llenado por las mujeres</h2>
+            </div>
+
+            <!-- Q3 - ¿Estás consciente? -->
+            <div class="question-section">
+                <div class="question-title">Q3: ¿Estás consciente de las necesidades de tu esposo? (las 3 P: Poder, Prestigio, Placer)</div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q3_1" name="q3" value="Si" required>
-                        <label for="q3_1">Si</label>
+                        <input type="radio" id="q3_1" name="q3" value="Sí" required>
+                        <label for="q3_1">Sí</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q3_2" name="q3" value="No">
@@ -112,9 +122,9 @@
                 </div>
             </div>
 
-            <!-- Q4 - Checkbox -->
+            <!-- Q4 - Ejemplos como checkboxes, visible si Q3=Sí -->
             <div class="question-section conditional-section hidden" id="q4-section">
-                <div class="question-title">Q4: ¿Si tu respuesta es afirmativa, marca con un gancho las que aplican:</div>
+                <div class="question-title">Q4: Aquí te damos algunos ejemplos para que verifiques si tu respuesta se ajusta a lo que significa tener en cuenta sus necesidades afectivas. Marca con un gancho las que aplican:</div>
                 <div class="checkbox-group">
                     <div class="checkbox-option">
                         <input type="checkbox" id="q4_1" name="q4" value="Busco ocasiones para pedirle a mi esposo apoyo en algo que él sabe hacer bien, lo que aumenta su sentimiento de valía">
@@ -129,8 +139,8 @@
                         <label for="q4_3">Respeto las diferencias entre mi esposo y yo, especialmente cuando no está atento a cosas que para mí son obvias y busco el momento oportuno para hablar de ellas</label>
                     </div>
                     <div class="checkbox-option">
-                        <input type="checkbox" id="q4_4" name="q4" value="De vez en cuando le preparo una comida que le encanta a pesar de que no es la mas saludable">
-                        <label for="q4_4">De vez en cuando le preparo una comida que le encanta a pesar de que no es la mas saludable</label>
+                        <input type="checkbox" id="q4_4" name="q4" value="De vez en cuando le preparo una comida que le encanta a pesar de que no es la más saludable">
+                        <label for="q4_4">De vez en cuando le preparo una comida que le encanta a pesar de que no es la más saludable</label>
                     </div>
                 </div>
             </div>
@@ -169,7 +179,7 @@
 
         <!-- Success Message -->
         <div class="success-message" id="successMessage">
-            ✓ ¡Encuesta enviada correctamente!
+            ✓ ¡Encuesta enviada exitosamente!
         </div>
 
         <!-- Summary Section -->
@@ -190,32 +200,26 @@
             const q4Section = document.getElementById('q4-section');
             const q4Checkboxes = document.querySelectorAll('#q4-section input[type="checkbox"]');
 
-            // Q1 -> Q2 logic
+            // Q1=Sí -> mostrar Q2 checkboxes
             q1Radios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    if (this.value === 'Si') {
+                    if (this.value === 'Sí') {
                         q2Section.classList.remove('hidden');
                     } else {
                         q2Section.classList.add('hidden');
-                        // Clear Q2 selections
-                        q2Checkboxes.forEach(checkbox => {
-                            checkbox.checked = false;
-                        });
+                        q2Checkboxes.forEach(cb => cb.checked = false);
                     }
                 });
             });
 
-            // Q3 -> Q4 logic
+            // Q3=Sí -> mostrar Q4 checkboxes
             q3Radios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    if (this.value === 'Si') {
+                    if (this.value === 'Sí') {
                         q4Section.classList.remove('hidden');
                     } else {
                         q4Section.classList.add('hidden');
-                        // Clear Q4 selections
-                        q4Checkboxes.forEach(checkbox => {
-                            checkbox.checked = false;
-                        });
+                        q4Checkboxes.forEach(cb => cb.checked = false);
                     }
                 });
             });
@@ -223,10 +227,10 @@
 
         // Define questions for this survey
         window.surveyQuestions = {
-            q1: "Q1: ¿Estás consciente de las necesidades afectivas de tu esposa? (las 3 A)",
-            q2: "Q2: ¿Tus acciones son congruentes con tu respuesta?",
-            q3: "Q3: ¿Estás consciente de las necesidades de tu esposo? (las 3 P)",
-            q4: "Q4: ¿Si tu respuesta es afirmativa, marca con un gancho las que aplican:",
+            q1: "Q1: ¿Estás consciente de las necesidades afectivas de tu esposa? (las 3 A: Afecto, Atención, Aprecio)",
+            q2: "Q2: Marca con un gancho en las que aplique:",
+            q3: "Q3: ¿Estás consciente de las necesidades de tu esposo? (las 3 P: Poder, Prestigio, Placer)",
+            q4: "Q4: Marca con un gancho las que aplican:",
             conversation: "¿Qué acción puedo tomar hoy para demostrar mi compromiso de dar en esta relación, sin esperar resultados en el futuro?"
         };
 
